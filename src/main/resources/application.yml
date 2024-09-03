@@ -1,0 +1,18 @@
+epdms:
+    openapi:
+        dev-url: https://epdms-api.com
+        local-url: http://localhost:8080
+spring:
+    main:
+        allow-circular-references: true
+    r2dbc:
+        password: postgres
+        url: r2dbc:postgresql://localhost:5432/epdms
+        username: postgres
+springdoc:
+    api-docs:
+        path: /epdms-api-docs
+    swagger-ui:
+        filter: true
+        path: /epdms-documentation
+        tryItOutEnabled: true
