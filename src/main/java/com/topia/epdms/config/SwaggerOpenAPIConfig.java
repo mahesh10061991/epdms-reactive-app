@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+import static com.topia.epdms.constant.EpdmsConstant.OpenApi.*;
+
 @Configuration
 public class SwaggerOpenAPIConfig {
     @Value("${epdms.openapi.local-url}")
@@ -23,25 +25,25 @@ public class SwaggerOpenAPIConfig {
     public OpenAPI myOpenAPI() {
         Server empdmsLocalServer = new Server();
         empdmsLocalServer.setUrl(swaggerUri);
-        empdmsLocalServer.setDescription("Server URL in Development environment");
+        empdmsLocalServer.setDescription(DEV_ENVIRONMENT_DESCRIPTION);
 
         Server devServer = new Server();
         devServer.setUrl(swaggerDevUri);
-        devServer.setDescription("Server URL in Production environment");
+        devServer.setDescription(PROD_ENVIRONMENT_DESCRIPTION);
 
 
         Contact contact = new Contact();
-        contact.setEmail("topia@sourcefuse.com");
-        contact.setName("SourceFuse");
-        contact.setUrl("https://www.sourcefuse.com/");
+        contact.setEmail(TOPIA_EMAIL);
+        contact.setName(COMPANY_NAME);
+        contact.setUrl(ENTITY_URL);
 
-        License mitLicense = new License().name("SourceFuse License").url("https://www.sourcefuse.com/");
+        License mitLicense = new License().name(COMPANY_NAME+LICENCE).url(ENTITY_URL);
 
         Info info = new Info()
-                .title("EPDMS Spring Reactive Service")
+                .title(EPDMS_SERVICE_DESCRIPTION)
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to manage EPDMS operations").termsOfService("https://www.sourcefuse.com/")
+                .description(OPEN_API_DESCRIPTION).termsOfService(ENTITY_URL)
                 .license(mitLicense);
 
         return new OpenAPI().info(info).servers(List.of(empdmsLocalServer,devServer));
