@@ -1,7 +1,6 @@
 package com.topia.epdms.controller;
 
 import com.topia.epdms.service.UtilityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +13,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1")
 public class UtilityController {
 
-    @Autowired
-    private UtilityService utilityService;
+    private final UtilityService utilityService;
+
+    public UtilityController(UtilityService utilityService) {
+        this.utilityService = utilityService;
+    }
 
     @GetMapping("/health")
     public ResponseEntity<Mono<Boolean>> checkDBHealth() {
