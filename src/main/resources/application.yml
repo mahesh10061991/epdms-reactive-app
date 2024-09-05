@@ -44,6 +44,14 @@ spring:
         password: postgres
         url: r2dbc:postgresql://localhost:5432/epdms
         username: postgres
+# Disabled Config Server for now
+    cloud:
+        config:
+            enabled: false
+
+# Uncomment these changes when you required config server configurations
+    #config:
+        #import: configserver:http://localhost:8030
 springdoc:
     api-docs:
         path: /epdms-api-docs
