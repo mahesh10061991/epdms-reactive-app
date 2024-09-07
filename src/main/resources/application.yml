@@ -35,7 +35,7 @@ server:
     shutdown: GRACEFUL
 spring:
     application:
-        name: epdms-reactive-app
+        name: EPDMS-REACTIVE-APP
     lifecycle:
         timeout-per-shutdown-phase: 1m
     main:
