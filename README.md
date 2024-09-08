@@ -1,4 +1,4 @@
-# EPDMS Microservice Sample Appilcation
+# EPDMS Microservice Sample Application
 
 This is spring boot sample application with asynchronous/non-blocking implementation with Spring Webflux/Reactive Flow
 
@@ -50,7 +50,7 @@ This is an example of how you may give instructions on setting up your project l
 * API-GATEWAY
 * EPDMS-REACTIVE-APP
 * Please sit and relax, all set now and open the service discovery url to verify all services are running and registered with discovery service
-
+* Please all services should be run and up
 
 ### Endpoints URLs for Spring Boot Setting Applications
 * Eureka Server - Netflix Eureka Service Registry and Service Discovery App
@@ -76,6 +76,86 @@ This is an example of how you may give instructions on setting up your project l
 * Spring Boot Actuator for Monitoring
   
   URL: http://localhost:8040/actuator
+
+## Spring Boot Reactive Sample APIs
+
+
+## Sample Message Print Controller
+### Get Hello Message Controller
+* http://localhost:8084/message
+
+## Sample User Authentication and Authorization Controller Endpoints
+### Register a User
+* http://localhost:8084/signup
+
+### Generate JWT Token for authentication and authorization
+* http://localhost:8084/login
+
+### Checking Bearer token JWT flow is working or not
+* http://localhost:8084/protected
+
+
+## Sample Employee Controller for CRUD
+### Create an Employee using JWT token
+Method: POST
+* Request Body
+* {
+  "name": "Test",
+  "department": "Computer",
+  "address": "Noida",
+  "salary": 10000.00
+  }
+* Response Body
+* {
+  "id": 5,
+  "name": "Test",
+  "department": "Computer",
+  "address": "Noida",
+  "salary": 10000.00
+  }
+* http://localhost:8084/api/employee
+
+### Get an employee by Id
+* Method: GET
+* http://localhost:8084/api/employee/{id}
+
+### Get a list of all employees
+* Method: GET
+* http://localhost:8084/api/employee/all
+
+### Get employees by department name
+* Method: GET
+* http://localhost:8084/api/employee/department/{department}
+
+### Update an employee
+* Method: PUT
+* Request Body
+  {
+  "id": 3,
+  "name": "Test",
+  "department": "Electronics",
+  "address": "Noida",
+  "salary": 10000.0
+  }
+* Response Body
+* {
+  "id": 3,
+  "name": "Test",
+  "department": "Electronics",
+  "address": "Noida",
+  "salary": 10000.0
+  }
+* http://localhost:8084/api/employee/{id}
+
+### Delete an employee by employee id
+* Method: DELETE
+* http://localhost:8084/api/employee/{id}
+
+### Delete all employees
+* Method: DELETE
+* http://localhost:8084/api/employee/
+
+
 
 ## Q&A
 Please feel free to any questions ?
