@@ -32,6 +32,7 @@ This is an example of how you may give instructions on setting up your project l
 * Spring Webflux 
 * pgAdmin 4
 * Kubernetes
+* Google Java Code Format Plugin
 
 ### Installing
 
@@ -93,6 +94,8 @@ Please feel free to any questions ?
 * Config Server
 * Spring Security
 * JWT Implementation
+* Request Processing Timeout
+* Spring Boot Exceptions
 
 ## Terminology and Service Responsibilities
 
