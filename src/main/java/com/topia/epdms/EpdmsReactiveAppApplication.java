@@ -7,7 +7,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableConfigurationProperties
 public class EpdmsReactiveAppApplication {
 
 	public static void main(String[] args) {
