@@ -22,95 +22,95 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api/employees")
 public class EmployeeController {
-  @Autowired
-  EmployeeService employeeService;
+    @Autowired
+    EmployeeService employeeService;
 
-  @GetMapping("/all")
-  @ResponseStatus(HttpStatus.OK)
-  public Flux<ResponseEntity<Employee>> getAllEmployees(@RequestParam(required = false) String name) {
-    if (name == null)
-      return employeeService
-              .findAll()
-              .map(employee ->
-                      ResponseEntity
-                              .ok()
-                              .contentType(MediaType.APPLICATION_JSON)
-                              .body(employee));
-    else
-      return employeeService
-              .findByNameContaining(name)
-              .map(employee ->
-                      ResponseEntity
-                              .ok()
-                              .contentType(MediaType.APPLICATION_JSON)
-                              .body(employee));
-  }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<ResponseEntity<Employee>> getAllEmployees(@RequestParam(required = false) String name) {
+        if (name == null)
+            return employeeService
+                    .findAll()
+                    .map(employee ->
+                            ResponseEntity
+                                    .ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(employee));
+        else
+            return employeeService
+                    .findByNameContaining(name)
+                    .map(employee ->
+                            ResponseEntity
+                                    .ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(employee));
+    }
 
-  @GetMapping("/{id}")
-  @ResponseStatus(HttpStatus.OK)
-  public Mono<ResponseEntity<Employee>> getEmployeeById(@PathVariable("id") int id) {
-    return employeeService
-            .findById(id)
-            .map(employee ->
-                    ResponseEntity
-                            .ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(employee));
-  }
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<ResponseEntity<Employee>> getEmployeeById(@PathVariable("id") int id) {
+        return employeeService
+                .findById(id)
+                .map(employee ->
+                        ResponseEntity
+                                .ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(employee));
+    }
 
-  @PostMapping()
-  @ResponseStatus(HttpStatus.CREATED)
-  public Mono<ResponseEntity<Employee>> createEmployee(@RequestBody Employee employee) {
-    return employeeService
-            .save(employee)
-            .map(employeeObj ->
-                    ResponseEntity
-                            .ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(employeeObj));
-  }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mono<ResponseEntity<Employee>> createEmployee(@RequestBody Employee employee) {
+        return employeeService
+                .save(employee)
+                .map(employeeObj ->
+                        ResponseEntity
+                                .ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(employeeObj));
+    }
 
-  @PutMapping("/{id}")
-  @ResponseStatus(HttpStatus.OK)
-  public Mono<ResponseEntity<Employee>> updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee) {
-    return employeeService
-            .update(id, employee)
-            .map(employeeObj ->
-                    ResponseEntity
-                            .ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(employeeObj));
-  }
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<ResponseEntity<Employee>> updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee) {
+        return employeeService
+                .update(id, employee)
+                .map(employeeObj ->
+                        ResponseEntity
+                                .ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(employeeObj));
+    }
 
-  @DeleteMapping("/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public Mono<ResponseEntity<Void>> deleteEmployee(@PathVariable("id") int id) {
-    return employeeService
-            .deleteById(id)
-            .map(obj ->
-                    ResponseEntity.ok().build());
-  }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Mono<ResponseEntity<Void>> deleteEmployee(@PathVariable("id") int id) {
+        return employeeService
+                .deleteById(id)
+                .map(obj ->
+                        ResponseEntity.ok().build());
+    }
 
-  @DeleteMapping()
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public Mono<ResponseEntity<Void>> deleteAllEmployees() {
-    return employeeService
-            .deleteAll()
-            .map(obj ->
-                    ResponseEntity.ok().build());
-  }
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Mono<ResponseEntity<Void>> deleteAllEmployees() {
+        return employeeService
+                .deleteAll()
+                .map(obj ->
+                        ResponseEntity.ok().build());
+    }
 
-  @GetMapping("/department/{department}")
-  @ResponseStatus(HttpStatus.OK)
-  public Flux<ResponseEntity<Employee>> findByDepartment(@PathVariable("department") String department) {
-    return employeeService
-            .findByDepartment(department)
-            .map(employee ->
-                    ResponseEntity
-                            .ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(employee));
-  }
+    @GetMapping("/department/{department}")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<ResponseEntity<Employee>> findByDepartment(@PathVariable("department") String department) {
+        return employeeService
+                .findByDepartment(department)
+                .map(employee ->
+                        ResponseEntity
+                                .ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(employee));
+    }
 }

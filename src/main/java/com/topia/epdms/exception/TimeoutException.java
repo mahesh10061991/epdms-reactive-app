@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @Data
-public class TimeoutException extends Exception {
+public class TimeoutException extends RuntimeException {
     private final String message;
     private final String field;
 }
